@@ -1,16 +1,10 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React from 'react'
 
 const Footer = () => {
-  const actualYear = new Date().getFullYear();
-  const location = useLocation().pathname;
+  const actualYear = new Date().getFullYear()
 
   return (
-    <footer
-      className={`font-neue flex justify-between ${
-        location !== '/' ? 'text-dq-light-gray' : ''
-      }`}
-    >
+    <footer className="font-neue flex justify-between flex-shrink-0 py-10 text-dq-light-gray bg-white px-24">
       <div>
         <p>¡Escribe lo que quieras!</p>
         <p>&copy; {actualYear} -- Decirte Que...</p>
@@ -26,7 +20,7 @@ const Footer = () => {
         <p className="text-right">#DecirteQue</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer
