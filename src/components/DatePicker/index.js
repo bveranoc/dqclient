@@ -1,11 +1,22 @@
 import React, { useState } from 'react'
 
+// Third-Party Components
 import ReactDatePicker from 'react-datepicker'
+import { registerLocale } from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
+// Icons
+import DownArrowIcon from '../../icons/DownArrowIcon'
+
+// Styles
 import './styles.css'
 
-const DatePicker = () => {
+// Internationalization
+import es from 'date-fns/locale/es'
+import { useEffect } from 'react/cjs/react.development'
+registerLocale('es', es)
+
+const DatePicker = ({ homeData, setHomeData }) => {
   const today = new Date()
   const tomorrow = new Date(today)
   tomorrow.setDate(tomorrow.getDate() + 1)
@@ -21,6 +32,17 @@ const DatePicker = () => {
     setIsOpen(!isOpen)
   }
 
+  useEffect(() => {
+    let day = ('0' + startDate.getDate()).slice(-2)
+    let month = ('0' + (startDate.getMonth() + 1)).slice(-2)
+    let year = startDate.getFullYear()
+
+    setHomeData({
+      ...homeData,
+      sendingDate: `${year}-${month}-${day}`,
+    }) //eslint-disable-next-line
+  }, [startDate])
+
   return (
     <>
       <button
@@ -28,14 +50,7 @@ const DatePicker = () => {
         type="button"
         onClick={handleClick}
       >
-        <svg
-          width="19"
-          height="10"
-          viewBox="0 0 19 10"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="m0 0 9.178 9.689L18.356 0z" fill="#000" fillRule="evenodd" />
-        </svg>
+        <DownArrowIcon />
       </button>
       {isOpen && (
         <ReactDatePicker
@@ -43,6 +58,7 @@ const DatePicker = () => {
           onChange={handleChange}
           minDate={tomorrow}
           inline
+          locale="es"
         />
       )}
     </>

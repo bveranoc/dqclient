@@ -11,11 +11,11 @@ const Footer = () => {
       </div>
       <div>
         <div>
-          <a href="#">Facebook</a>
-          <a href="#" className="mx-4">
+          <a href="https://facebook.com">Facebook</a>
+          <a href="https://instagram.com" className="mx-4">
             Instagram
           </a>
-          <a href="#">Twitter</a>
+          <a href="https://twitter.com">Twitter</a>
         </div>
         <p className="text-right">#DecirteQue</p>
       </div>

@@ -1,12 +1,26 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react'
 
-const ColorPicker = ({ isText }) => {
-  const [color, setColor] = useState(isText ? '#000000' : '#FFFFFF');
-  const colorPicker = useRef();
+const ColorPicker = ({ ctxColor, isText, homeData, setHomeData }) => {
+  const [color, setColor] = useState(ctxColor)
+  const colorPicker = useRef()
 
   const onChange = () => {
-    setColor(colorPicker.current.value.toUpperCase());
-  };
+    setColor(colorPicker.current.value.toUpperCase())
+  }
+
+  useEffect(() => {
+    if (isText) {
+      setHomeData({
+        ...homeData,
+        textColor: color,
+      })
+    } else {
+      setHomeData({
+        ...homeData,
+        bgColor: color,
+      })
+    } //eslint-disable-next-line
+  }, [color])
 
   return (
     <div className={isText ? '' : 'mx-4'}>
@@ -22,10 +36,11 @@ const ColorPicker = ({ isText }) => {
         type="color"
         id={isText ? 'colorpicker-text' : 'colorpicker-bg'}
         ref={colorPicker}
+        value={color}
         onChange={onChange}
       />
     </div>
-  );
-};
+  )
+}
 
-export default ColorPicker;
+export default ColorPicker

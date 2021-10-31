@@ -1,0 +1,3 @@
+export const SAVE_HOME_DATA = 'SAVE_HOME_DATA'
+export const SAVE_DESTINATARY = 'SAVE_DESTINATARY'
+export const SWITCH_THEME = 'SWITCH_THEME'

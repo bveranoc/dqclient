@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react'
+
+import ThemeContext from '../store/context/theming/themeContext'
+
+// Layout
+import AppLayout from '../layout/AppLayout'
 
 const MessagePage = () => {
-  return <div>Message</div>;
-};
+  const themeContext = useContext(ThemeContext)
+  const { switchTheme } = themeContext
 
-export default MessagePage;
+  useEffect(() => {
+    switchTheme(true)
+    //eslint-disable-next-line
+  }, [])
+
+  return (
+    <AppLayout>
+      <p>Hola</p>
+    </AppLayout>
+  )
+}
+
+export default MessagePage

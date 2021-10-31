@@ -3,31 +3,50 @@ import MsgContext from './msgContext'
 import MsgReducer from './msgReducer'
 
 // Types
+import { SAVE_HOME_DATA, SAVE_DESTINATARY } from '../../types'
 
-export default (props) => {
+const MsgState = (props) => {
   const initialState = {
-    message: null,
-    destination: null,
-    bgColor: null,
-    textColor: null,
-    isAnonymus: null,
+    message: '',
+    isAnonymus: false,
+    bgColor: '#FFFFFF',
+    textColor: '#000000',
     sendingDate: null,
+    destinatary: null,
   }
 
   const [state, dispatch] = useReducer(MsgReducer, initialState)
+
+  const saveHomeData = (data) => {
+    dispatch({
+      type: SAVE_HOME_DATA,
+      payload: data,
+    })
+  }
+
+  const saveDestinatary = (data) => {
+    dispatch({
+      type: SAVE_DESTINATARY,
+      payload: data,
+    })
+  }
 
   return (
     <MsgContext.Provider
       value={{
         message: state.message,
-        destination: state.destination,
+        isAnonymus: state.isAnonymus,
         bgColor: state.bgColor,
         textColor: state.textColor,
-        isAnonymus: state.isAnonymus,
         sendingDate: state.sendingDate,
+        destinatary: state.destinatary,
+        saveHomeData,
+        saveDestinatary,
       }}
     >
       {props.children}
     </MsgContext.Provider>
   )
 }
+
+export default MsgState
