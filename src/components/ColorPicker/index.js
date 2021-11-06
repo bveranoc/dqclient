@@ -1,11 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react'
 
-const ColorPicker = ({ ctxColor, isText, homeData, setHomeData }) => {
+const ColorPicker = ({
+  ctxColor,
+  isText,
+  homeData,
+  setHomeData,
+  setHomeColor,
+}) => {
   const [color, setColor] = useState(ctxColor)
   const colorPicker = useRef()
 
   const onChange = () => {
     setColor(colorPicker.current.value.toUpperCase())
+    setHomeColor(colorPicker.current.value.toUpperCase())
   }
 
   useEffect(() => {

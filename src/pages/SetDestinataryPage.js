@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState, useRef } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 // Layout
 import AppLayout from '../layout/AppLayout'
 
 // Context
-import ThemeContext from '../store/context/theming/themeContext'
 import MsgContext from '../store/context/messaging/msgContext'
 
 // Icons
@@ -30,9 +29,7 @@ const SetDestinataryPage = () => {
   const [destinatary, setDestinatary] = useState('')
   const destinataryRef = useRef()
 
-  const themeContext = useContext(ThemeContext)
   const msgContext = useContext(MsgContext)
-  const { switchTheme } = themeContext
   const { saveDestinatary } = msgContext
 
   const onChange = () => {
@@ -44,11 +41,6 @@ const SetDestinataryPage = () => {
     saveDestinatary(destinatary)
   }
 
-  useEffect(() => {
-    switchTheme(false)
-    //eslint-disable-next-line
-  }, [])
-
   return (
     <motion.div
       initial="out"
@@ -57,7 +49,7 @@ const SetDestinataryPage = () => {
       variants={pageVariants}
       transition={pageTransition}
     >
-      <AppLayout>
+      <AppLayout bgColor="#f2f2f2">
         <form className="font-neue text-dq-dark-gray" onSubmit={onSubmit}>
           <div className="flex items-center justify-between">
             <input
@@ -74,7 +66,7 @@ const SetDestinataryPage = () => {
               type="submit"
             >
               <EnterIcon />
-              <span className="align-text-top">Enviar</span>
+              <span className="align-text-top hover:text-black">Enviar</span>
             </button>
           </div>
           <p className="mt-7 font-medium text-3xl">

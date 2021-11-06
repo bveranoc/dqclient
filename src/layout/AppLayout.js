@@ -1,21 +1,14 @@
-import React, { useContext } from 'react'
-
-// Context
-import ThemeContext from '../store/context/theming/themeContext'
+import React from 'react'
 
 // Components
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const AppLayout = ({ children }) => {
-  const themeContext = useContext(ThemeContext)
-  const { isWhiteTheme } = themeContext
-
+const AppLayout = ({ children, bgColor }) => {
   return (
     <div
-      className={`flex flex-col min-h-screen ${
-        !isWhiteTheme && 'bg-dq-bg-gray'
-      }`}
+      className="flex flex-col min-h-screen"
+      style={{ backgroundColor: bgColor }}
     >
       <div className="flex-grow align-middle px-24 flex flex-col">
         <Navbar />

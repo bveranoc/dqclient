@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
 // Layout
@@ -6,7 +6,6 @@ import AppLayout from '../layout/AppLayout'
 
 // Context
 import MsgContext from '../store/context/messaging/msgContext'
-import ThemeContext from '../store/context/theming/themeContext'
 
 // Components
 import ColorPicker from '../components/ColorPicker'
@@ -18,15 +17,12 @@ import { SET_DESTINATARY } from '../routes'
 const HomePage = () => {
   // Load Context
   const msgContext = useContext(MsgContext)
-  const themeContext = useContext(ThemeContext)
   const { saveHomeData, message, isAnonymus, bgColor, textColor, sendingDate } =
     msgContext
-  const { switchTheme } = themeContext
 
-  useEffect(() => {
-    switchTheme(true)
-    //eslint-disable-next-line
-  }, [])
+  // Load State
+  const [homeBg, setHomeBg] = useState(bgColor)
+  const [homeTxt, setHomeTxt] = useState(textColor)
 
   // Load router
   let history = useHistory()
@@ -47,20 +43,23 @@ const HomePage = () => {
   }
 
   return (
-    <AppLayout>
+    <AppLayout bgColor={homeBg}>
       <div className="flex justify-center flex-col py-10">
-        <h1 className="font-neue font-bold text-8xl">Quería decirte que...</h1>
+        <h1 className="font-neue font-bold text-8xl" style={{ color: homeTxt }}>
+          Quería decirte que...
+        </h1>
         <form className="font-neue" onSubmit={onSubmit}>
           <div className="flex flex-col">
             <input
               type="text"
-              placeholder="yo fui el que se"
-              className="text-8xl font-bold placeholder-dq-dark-gray outline-none bg-transparent"
+              className="text-8xl font-bold outline-none bg-transparent"
               autoFocus
               value={homeData.message}
               onChange={(e) =>
                 setHomeData({ ...homeData, message: e.target.value })
               }
+              style={{ color: homeTxt }}
+              maxLength="20"
               required
             />
             <div className="my-7 flex">
@@ -80,12 +79,14 @@ const HomePage = () => {
                 ctxColor={bgColor}
                 homeData={homeData}
                 setHomeData={setHomeData}
+                setHomeColor={setHomeBg}
               />
               <ColorPicker
                 ctxColor={textColor}
                 isText
                 homeData={homeData}
                 setHomeData={setHomeData}
+                setHomeColor={setHomeTxt}
               />
             </div>
           </div>
@@ -98,6 +99,11 @@ const HomePage = () => {
             </button>
             <DatePicker homeData={homeData} setHomeData={setHomeData} />
           </div>
+          <p className="mt-2">
+            Se enviará el{' '}
+            {homeData.sendingDate &&
+              homeData.sendingDate.split('-').reverse().join('/')}
+          </p>
         </form>
       </div>
     </AppLayout>

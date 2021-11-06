@@ -7,15 +7,12 @@ import './index.css'
 
 // Context
 import MsgState from './store/context/messaging/msgState'
-import ThemeState from './store/context/theming/themeState'
 
 ReactDOM.render(
-  <ThemeState>
-    <MsgState>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </MsgState>
-  </ThemeState>,
+  <MsgState>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </MsgState>,
   document.getElementById('root')
 )
