@@ -1,3 +1,11 @@
 .react-datepicker {
   position: absolute;
 }
+
+@media (max-width: 640px) {
+  .react-datepicker {
+    position: absolute;
+    top: 50px;
+    left: 0;
+  }
+}

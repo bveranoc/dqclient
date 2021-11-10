@@ -17,7 +17,7 @@ import { SET_DESTINATARY } from '../routes'
 const HomePage = () => {
   // Load Context
   const msgContext = useContext(MsgContext)
-  const { saveHomeData, message, isAnonymus, bgColor, textColor, sendingDate } =
+  const { saveHomeData, body, isAnonymus, bgColor, textColor, sendingDate } =
     msgContext
 
   // Load State
@@ -28,7 +28,7 @@ const HomePage = () => {
   let history = useHistory()
 
   const [homeData, setHomeData] = useState({
-    message,
+    body,
     isAnonymus,
     bgColor,
     textColor,
@@ -45,27 +45,33 @@ const HomePage = () => {
   return (
     <AppLayout bgColor={homeBg}>
       <div className="flex justify-center flex-col py-10">
-        <h1 className="font-neue font-bold text-8xl" style={{ color: homeTxt }}>
+        <h1
+          className="font-neue font-bold text-4xl md:text-6xl lg:text-8xl"
+          style={{ color: homeTxt }}
+        >
           Quería decirte que...
         </h1>
         <form className="font-neue" onSubmit={onSubmit}>
           <div className="flex flex-col">
             <input
               type="text"
-              className="text-8xl font-bold outline-none bg-transparent"
+              className="text-4xl md:text-6xl lg:text-8xl font-bold outline-none bg-transparent"
               autoFocus
-              value={homeData.message}
+              value={homeData.body}
               onChange={(e) =>
-                setHomeData({ ...homeData, message: e.target.value })
+                setHomeData({ ...homeData, body: e.target.value })
               }
               style={{ color: homeTxt }}
               maxLength="20"
               required
             />
-            <div className="my-7 flex">
-              <label className="flex items-center" htmlFor="checkbox-anonymus">
+            <div className="my-7 flex flex-col-reverse md:flex-row">
+              <label
+                className="flex items-center mr-5"
+                htmlFor="checkbox-anonymus"
+              >
                 <input
-                  className="w-5 h-5 mr-2"
+                  className="md:w-5 md:h-5 mr-2"
                   type="checkbox"
                   id="checkbox-anonymus"
                   checked={homeData.isAnonymus}
@@ -75,24 +81,26 @@ const HomePage = () => {
                 />
                 Enviar mi mensaje de manera anónima.
               </label>
-              <ColorPicker
-                ctxColor={bgColor}
-                homeData={homeData}
-                setHomeData={setHomeData}
-                setHomeColor={setHomeBg}
-              />
-              <ColorPicker
-                ctxColor={textColor}
-                isText
-                homeData={homeData}
-                setHomeData={setHomeData}
-                setHomeColor={setHomeTxt}
-              />
+              <div className="flex">
+                <ColorPicker
+                  ctxColor={bgColor}
+                  homeData={homeData}
+                  setHomeData={setHomeData}
+                  setHomeColor={setHomeBg}
+                />
+                <ColorPicker
+                  ctxColor={textColor}
+                  isText
+                  homeData={homeData}
+                  setHomeData={setHomeData}
+                  setHomeColor={setHomeTxt}
+                />
+              </div>
             </div>
           </div>
-          <div className="flex items-stretch">
+          <div className="flex items-stretch relative">
             <button
-              className="font-bold border-2 border-black bg-transparent text-4xl cursor-pointer py-2 px-3 mr-0.5"
+              className="font-bold border-2 border-black bg-transparent text-2xl md:text-4xl cursor-pointer py-1 px-2 md:py-2 md:px-3 mr-0.5"
               type="submit"
             >
               Enviar a

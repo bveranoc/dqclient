@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
 import { HOME } from '../../routes'
 
+// Context
+import AuthContext from '../../store/context/authentication/authContext'
+
 const Navbar = () => {
   const history = useHistory()
   const location = useLocation()
+
+  const authContext = useContext(AuthContext)
+  const { auth, logout } = authContext
 
   const isHome = location.pathname === HOME
 
@@ -19,16 +25,21 @@ const Navbar = () => {
     >
       {!isHome && (
         <button
-          className="underline font-neue font-medium text-dq-dark-gray text-2xl"
+          className="underline font-neue font-medium text-dq-dark-gray text-lg md:text-2xl"
           onClick={goBack}
         >
           Volver
         </button>
       )}
 
-      <button className="underline font-neue font-medium text-dq-dark-gray text-2xl">
-        Salir
-      </button>
+      {auth && (
+        <button
+          onClick={logout}
+          className="underline font-neue font-medium text-dq-dark-gray text-lg md:text-2xl"
+        >
+          Salir
+        </button>
+      )}
     </header>
   )
 }

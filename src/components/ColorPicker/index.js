@@ -30,11 +30,13 @@ const ColorPicker = ({
   }, [color])
 
   return (
-    <div className={isText ? '' : 'mx-4'}>
-      <span>{isText ? 'Color de Texto' : 'Color de Fondo'}</span>
+    <div className={isText ? 'mx-4' : ''}>
+      <span className="text-sm">
+        {isText ? 'Color de Texto' : 'Color de Fondo'}
+      </span>
       <label
         htmlFor={isText ? 'colorpicker-text' : 'colorpicker-bg'}
-        className="ml-3 underline cursor-pointer"
+        className="ml-3 underline cursor-pointer text-sm"
       >
         {color}
       </label>

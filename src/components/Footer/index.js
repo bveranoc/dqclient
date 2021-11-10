@@ -4,7 +4,7 @@ const Footer = () => {
   const actualYear = new Date().getFullYear()
 
   return (
-    <footer className="font-neue flex justify-between flex-shrink-0 py-10 text-dq-light-gray bg-white px-24">
+    <footer className="font-neue flex justify-between text-sm md:text-base flex-shrink-0 py-10 text-dq-light-gray bg-white px-2 md:px-12 lg:px-24">
       <div>
         <p>¡Escribe lo que quieras!</p>
         <p>&copy; {actualYear} -- Decirte Que...</p>
