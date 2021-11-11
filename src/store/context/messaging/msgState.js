@@ -60,6 +60,18 @@ const MsgState = (props) => {
     }
   }
 
+  const getMessage = async (id, setter) => {
+    try {
+      const res = await axiosClient.get(`/message/display/${id}`)
+      setter(res.data.message)
+    } catch (error) {
+      dispatch({
+        type: SET_ERROR,
+        payload: error.response.data.message,
+      })
+    }
+  }
+
   return (
     <MsgContext.Provider
       value={{
@@ -73,6 +85,7 @@ const MsgState = (props) => {
         saveHomeData,
         saveDestinatary,
         sendMessage,
+        getMessage,
       }}
     >
       {props.children}

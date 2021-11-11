@@ -13,7 +13,10 @@ const Navbar = () => {
   const authContext = useContext(AuthContext)
   const { auth, logout } = authContext
 
-  const isHome = location.pathname === HOME
+  const notGoBack =
+    location.pathname === HOME || location.pathname.includes('/message/')
+
+  console.log(location.pathname)
 
   const goBack = () => {
     history.goBack()
@@ -21,9 +24,9 @@ const Navbar = () => {
 
   return (
     <header
-      className={`py-10 text-right ${!isHome ? 'flex justify-between' : ''}`}
+      className={`py-10 text-right ${!notGoBack ? 'flex justify-between' : ''}`}
     >
-      {!isHome && (
+      {!notGoBack && (
         <button
           className="underline font-neue font-medium text-dq-dark-gray text-lg md:text-2xl"
           onClick={goBack}
