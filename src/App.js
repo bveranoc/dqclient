@@ -10,6 +10,12 @@ import AuthPage from './pages/AuthPage'
 import ThankYouPage from './pages/ThankYouPage'
 import SendMessagePage from './pages/SendMessagePage'
 
+import AdminLoginPage from './pages/AdminLoginPage'
+import AdminDashboardPage from './pages/AdminDashboardPage'
+
+// Routes
+import ProtectedRoute from './routes/Protected'
+
 // Router
 import {
   HOME,
@@ -18,6 +24,8 @@ import {
   DISPLAY_MESSAGE,
   THANK_YOU,
   SEND_MESSAGE,
+  ADMIN_AUTH,
+  ADMIN_DASHBOARD,
 } from './routes'
 
 import AuthContext from './store/context/authentication/authContext'
@@ -38,12 +46,20 @@ const App = () => {
     <Router>
       <AnimatePresence>
         <Switch>
+          {/* CLIENT  */}
           <Route path={HOME} component={HomePage} exact />
           <Route path={SET_DESTINATARY} component={SetDestinataryPage} exact />
           <Route path={AUTH} component={AuthPage} exact />
           <Route path={DISPLAY_MESSAGE} component={MessagePage} exact />
           <Route path={THANK_YOU} component={ThankYouPage} exact />
           <Route path={SEND_MESSAGE} component={SendMessagePage} exact />
+          {/* ADMIN  */}
+          <Route path={ADMIN_AUTH} component={AdminLoginPage} exact />
+          <ProtectedRoute
+            path={ADMIN_DASHBOARD}
+            component={AdminDashboardPage}
+            exact
+          />
         </Switch>
       </AnimatePresence>
     </Router>

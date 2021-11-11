@@ -18,10 +18,8 @@ registerLocale('es', es)
 
 const DatePicker = ({ homeData, setHomeData }) => {
   const today = new Date()
-  const tomorrow = new Date(today)
-  tomorrow.setDate(tomorrow.getDate() + 1)
 
-  const [startDate, setStartDate] = useState(tomorrow)
+  const [startDate, setStartDate] = useState(today)
   const [isOpen, setIsOpen] = useState(false)
   const handleChange = (e) => {
     setIsOpen(!isOpen)
@@ -56,7 +54,7 @@ const DatePicker = ({ homeData, setHomeData }) => {
         <ReactDatePicker
           selected={startDate}
           onChange={handleChange}
-          minDate={tomorrow}
+          minDate={today}
           inline
           locale="es"
         />
