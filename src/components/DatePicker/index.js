@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 // Third-Party Components
 import ReactDatePicker from 'react-datepicker'
@@ -13,7 +13,6 @@ import './styles.css'
 
 // Internationalization
 import es from 'date-fns/locale/es'
-import { useEffect } from 'react/cjs/react.development'
 registerLocale('es', es)
 
 const DatePicker = ({ homeData, setHomeData }) => {
