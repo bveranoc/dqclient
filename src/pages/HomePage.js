@@ -62,16 +62,13 @@ const HomePage = () => {
                 setHomeData({ ...homeData, body: e.target.value })
               }
               style={{ color: homeTxt }}
-              maxLength="20"
+              maxLength="150"
               required
             />
             <div className="my-7 flex flex-col-reverse md:flex-row">
-              <label
-                className="flex items-center mr-5"
-                htmlFor="checkbox-anonymus"
-              >
+              <label className="flex mr-5" htmlFor="checkbox-anonymus">
                 <input
-                  className="md:w-5 md:h-5 mr-2"
+                  className="mr-8 appearance-none"
                   type="checkbox"
                   id="checkbox-anonymus"
                   checked={homeData.isAnonymus}

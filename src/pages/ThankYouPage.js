@@ -25,8 +25,8 @@ const ThankYouPage = () => {
 
   return (
     <AppLayout bgColor="#f2f2f2">
-      <div className="font-neue text-center">
-        <h2 className="text-xl md:text-4xl">
+      <div>
+        <h2 className="font-neue text-center font-bold text-4xl md:text-6xl lg:text-8xl">
           {errorMsg ? errorMsg : 'Tu mensaje fue enviado con éxito'}
         </h2>
       </div>

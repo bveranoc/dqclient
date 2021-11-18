@@ -16,8 +16,6 @@ const Navbar = () => {
   const notGoBack =
     location.pathname === HOME || location.pathname.includes('/message/')
 
-  console.log(location.pathname)
-
   const goBack = () => {
     history.goBack()
   }

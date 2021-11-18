@@ -42,7 +42,7 @@ const MessagePage = () => {
   }, [])
 
   return (
-    <AppLayout bgColor={message.bgColor}>
+    <AppLayout bgColor={message.bgColor} footerColor={message.bgColor}>
       <h1
         className="font-neue font-bold text-4xl md:text-6xl lg:text-8xl"
         style={{ color: message.textColor }}

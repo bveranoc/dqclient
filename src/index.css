@@ -3,20 +3,62 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Helvetica Neue';
-    src: local('Helvetica Neue'), url('./fonts/HelveticaNeue/HelveticaNeue-Normal.ttf') format('truetype');
-    font-weight: normal;
+  font-family: 'Helvetica Neue';
+  src: local('Helvetica Neue'),
+    url('./fonts/HelveticaNeue/HelveticaNeue-Normal.ttf') format('truetype');
+  font-weight: normal;
 }
 
 @font-face {
-    font-family: 'Helvetica Neue';
-    src: local('Helvetica Neue'), url('./fonts/HelveticaNeue/HelveticaNeue-Medium.ttf') format('truetype');
-    font-weight: 500;
+  font-family: 'Helvetica Neue';
+  src: local('Helvetica Neue'),
+    url('./fonts/HelveticaNeue/HelveticaNeue-Medium.ttf') format('truetype');
+  font-weight: 500;
 }
 
-
 @font-face {
-    font-family: 'Helvetica Neue';
-    font-weight: bold;
-    src: local('Helvetica Neue'), url('./fonts/HelveticaNeue/HelveticaNeue-Bold.ttf') format('truetype');
+  font-family: 'Helvetica Neue';
+  font-weight: bold;
+  src: local('Helvetica Neue'),
+    url('./fonts/HelveticaNeue/HelveticaNeue-Bold.ttf') format('truetype');
+}
+
+input[type='checkbox'] {
+  position: relative;
+  cursor: pointer;
+}
+input[type='checkbox']:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  outline: 1px solid black;
+}
+input[type='checkbox']:checked:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+}
+input[type='checkbox']:checked:after {
+  content: '';
+  display: block;
+  width: 5px;
+  height: 10px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  position: absolute;
+  top: 4px;
+  left: 7px;
 }

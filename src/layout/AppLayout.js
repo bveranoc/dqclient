@@ -4,7 +4,7 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-const AppLayout = ({ children, bgColor }) => {
+const AppLayout = ({ children, bgColor, footerColor }) => {
   return (
     <div
       className="flex flex-col min-h-screen"
@@ -14,7 +14,7 @@ const AppLayout = ({ children, bgColor }) => {
         <Navbar />
         <div className="flex-1 flex flex-col justify-center">{children}</div>
       </div>
-      <Footer />
+      <Footer color={footerColor} />
     </div>
   )
 }
