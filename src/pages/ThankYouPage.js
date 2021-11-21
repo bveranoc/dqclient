@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
-import { useEffect } from 'react/cjs/react.development'
 
 // Layout
 import AppLayout from '../layout/AppLayout'
