@@ -36,7 +36,7 @@ const FacebookButton = () => {
     if ('data_access_expiration_time' in res) {
       authUser(res.first_name, res.last_name, res.email, 'FACEBOOK')
     }
-    return history.push(SEND_MESSAGE)
+    history.push(SEND_MESSAGE)
   }
 
   return (
