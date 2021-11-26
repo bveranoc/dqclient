@@ -21,7 +21,7 @@ const SendMessagePage = () => {
       setTimeout(async () => {
         await sendMessage()
         history.push(THANK_YOU)
-      }, 500)
+      }, 2000)
     }
 
     if (body !== '') {
