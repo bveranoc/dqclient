@@ -6,6 +6,7 @@ import AppLayout from '../layout/AppLayout'
 
 // Context
 import MsgContext from '../store/context/messaging/msgContext'
+import AuthContext from '../store/context/authentication/authContext'
 
 // Routes
 import { THANK_YOU } from '../routes'
@@ -14,22 +15,25 @@ const SendMessagePage = () => {
   const history = useHistory()
 
   const msgContext = useContext(MsgContext)
+  const authContext = useContext(AuthContext)
   const { body, sendMessage } = msgContext
+  const { auth } = authContext
 
   useEffect(() => {
-    function send() {
-      setTimeout(async () => {
-        await sendMessage()
-        history.push(THANK_YOU)
-      }, 2000)
-    }
+    if (auth) {
+      function send() {
+        setTimeout(async () => {
+          await sendMessage()
+          history.push(THANK_YOU)
+        }, 2000)
+      }
 
-    if (body !== '') {
-      send()
+      if (body !== '') {
+        send()
+      }
     }
-
     //eslint-disable-next-line
-  }, [])
+  }, [auth])
 
   return (
     <AppLayout bgColor="#f2f2f2">
