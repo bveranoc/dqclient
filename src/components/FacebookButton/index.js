@@ -41,6 +41,7 @@ const FacebookButton = () => {
     <FacebookLogin
       appId={fbAppId}
       fields="first_name,last_name,email"
+      scope="public_profile,email"
       callback={callback}
       render={(renderProps) => <CustomFBButton onClick={renderProps.onClick} />}
     />
