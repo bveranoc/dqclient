@@ -43,6 +43,7 @@ const FacebookButton = () => {
       fields="first_name,last_name,email"
       scope="public_profile,email"
       callback={callback}
+      disableMobileRedirect
       render={(renderProps) => <CustomFBButton onClick={renderProps.onClick} />}
     />
   )
